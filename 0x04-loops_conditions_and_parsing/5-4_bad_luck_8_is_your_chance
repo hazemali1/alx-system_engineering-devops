@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#script to display best school 10 times using while
+s=10
+while [ $s -gt 0 ]
+do
+	if [ $s = 7 ]
+	then
+		echo "bad luck"
+	elif [ $s = 3 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	s=$((s - 1))
+done
