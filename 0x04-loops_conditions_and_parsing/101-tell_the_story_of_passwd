@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#some information about passward file
+while IFS=':' read -r s d f g h j k; do
+	echo "The user $s is part of the $g gang, lives in $j and rides $k. $f's place is protected by the passcode $d, more info about the user here: $h"
+done < /etc/passwd
