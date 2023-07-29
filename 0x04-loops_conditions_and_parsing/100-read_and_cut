@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #read file
-while read line; do
+while read -r _; do
 cut -d ':' -f 1,3,6 /etc/passwd
 done < README.md
