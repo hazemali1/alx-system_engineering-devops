@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-d = /h[\w$!]{1,2}n/
+d = /hbt+n/
 s = ARGV[0]
 if s.match?(d)
   w = s.scan(d)
