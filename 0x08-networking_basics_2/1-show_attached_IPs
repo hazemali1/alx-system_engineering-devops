@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#show atteched ips
+ifconfig | grep 'inet ' | awk '{print $2}'
