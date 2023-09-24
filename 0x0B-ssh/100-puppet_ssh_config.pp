@@ -1,9 +1,9 @@
 # puppet
-file_line { 'turn_off':
+file_line { 'Turn off passwd auth':
   path   => '/etc/ssh/ssh_config',
   line   => '    PasswordAuthentication no',
   }
-file_line { 'declare_file':
+file_line { 'Declare identity file':
   path   => '/etc/ssh/ssh_config',
-  line   => '    IdentityFile ~/.ssh/holberton',
+  line   => '    IdentityFile ~/.ssh/school',
   }
