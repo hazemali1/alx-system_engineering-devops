@@ -3,9 +3,12 @@
 
 sudo apt update
 sudo apt install -y nginx
-sudo service nginx restart
+
 echo "Hello World!" | sudo tee /var/www/html/index.html
+
 sudo sed -i '/server {/a \
     location \/redirect_me {\n\
         return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\
     }' /etc/nginx/sites-available/default
+
+sudo service nginx restart
