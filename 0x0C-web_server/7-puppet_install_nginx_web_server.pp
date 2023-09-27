@@ -23,7 +23,7 @@ Exec { 'redirect_me':
                   location /redirect_me {
                       return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
                   }
-              }" > /etc/nginx/sites-available/defaul',
+              }" > /etc/nginx/sites-available/default',
   provider => shell,
 }
 
