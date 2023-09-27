@@ -5,10 +5,6 @@ Exec { 'update':
   provider => shell,
 }
 
-Package { 'nginx':
-  ensure => 'present',
-}
-
 Exec { 'hello_world':
   command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
   provider => shell,
