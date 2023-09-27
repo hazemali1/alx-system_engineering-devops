@@ -11,7 +11,7 @@ Exec { 'hello_world':
 }
 
 Exec { 'redirect_me':
-  command  => 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/oluwaseundasilva.hashnode.dev\/;\\n\\t}/" /etc/nginx/sites-available/default',
+  command  => 'sudo sed -i "s/\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/oluwaseundasilva.hashnode.dev\/;\\n\\t}/" /etc/nginx/sites-available/default',
   provider => shell,
 }
 
