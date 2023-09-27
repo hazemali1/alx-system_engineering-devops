@@ -12,8 +12,6 @@ Exec { 'hello_world':
 
 Exec { 'redirect_me':
   command  => 'echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
