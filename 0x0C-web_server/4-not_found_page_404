@@ -17,6 +17,6 @@ echo "server {
         root /etc/nginx/html;
         internal;
     }
-}" > /etc/nginx/sites-available/default
+}" > /etc/nginx/sites-available/defaul
 echo "Ceci n'est pas une page" > /etc/nginx/html/not_foun_404.html
 sudo service nginx restart
