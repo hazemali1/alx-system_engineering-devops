@@ -1,7 +1,7 @@
 # install nginx
 
 Package { 'nginx':
-  provider => 'apt',
+  ensure => 'present',
 }
 
 Exec { 'hello_world':
