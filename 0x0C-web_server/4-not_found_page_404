@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt install -y nginx
-mkdir /etc/nginx/html
+sudo mkdir /etc/nginx/html
 echo "Hello World!" | sudo tee /var/www/html/index.html
 echo "server {
     listen 80 default_server;
