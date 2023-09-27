@@ -1,9 +1,5 @@
 # install nginx
 
-package {'nginx':
-  ensure => 'present',
-}
-
 Exec { 'update':
   command  => 'sudo apt update ; sudo apt install -y nginx',
   provider => shell,
@@ -14,16 +10,7 @@ Exec { 'hello_world':
   provider => shell,
 }
 
-Exec { 'redirect_me':
-  command  => 'echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}" > /etc/nginx/sites-available/default',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/oluwaseundasilva.hashnode.dev\/;\\n\\t}/" /etc/nginx/sites-available/default':
   provider => shell,
 }
 
