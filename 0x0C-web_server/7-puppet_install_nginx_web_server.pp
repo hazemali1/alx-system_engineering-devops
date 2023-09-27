@@ -10,7 +10,14 @@ Exec { 'hello_world':
   provider => shell,
 }
 
-exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/oluwaseundasilva.hashnode.dev\/;\\n\\t}/" /etc/nginx/sites-available/default':
+Exec { 'redirect_me':
+  command  => 'echo "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" > /etc/nginx/sites-available/default',
   provider => shell,
 }
 
