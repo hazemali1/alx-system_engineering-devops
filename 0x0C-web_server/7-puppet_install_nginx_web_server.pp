@@ -1,3 +1,5 @@
+# install nginx
+
 Package { 'nginx':
   provider => 'apt',
 }
