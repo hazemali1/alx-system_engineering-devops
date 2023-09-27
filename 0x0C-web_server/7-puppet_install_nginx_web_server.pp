@@ -1,7 +1,12 @@
 # install nginx
 
+Exec { 'update',
+  command => 'sudo apt update',
+  provider => 'shell',
+}
+
 Package { 'nginx':
-  ensure => 'present',
+  provider => 'apt',
 }
 
 Exec { 'hello_world':
