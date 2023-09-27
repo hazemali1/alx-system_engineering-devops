@@ -11,7 +11,7 @@ Exec { 'hello_world':
 }
 
 Exec { 'redirect_me':
-  command  => 'sudo sed -i "66i rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;" /etc/nginx/sites-available/default',
+  command  => 'sudo sed -i "66i ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;" /etc/nginx/sites-available/default',
   provider => shell,
 }
 
