@@ -11,7 +11,7 @@ Exec { 'hello_world':
 }
 
 Exec { 'redirect_me':
-  command  => 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;location /redirect_me {return 301  https://www.youtube.com/watch?v=QH2-TGUlwu4;}/" /etc/nginx/sites-available/default',
+  command  => 'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\    location /redirect_me {\\n\    return 301  https://www.youtube.com/watch?v=QH2-TGUlwu4;\\n\    }/" /etc/nginx/sites-available/default',
   provider => shell,
 }
 
