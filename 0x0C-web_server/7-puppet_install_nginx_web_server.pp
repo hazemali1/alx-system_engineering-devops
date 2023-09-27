@@ -1,6 +1,6 @@
 # install nginx
 
-Exec { 'update',
+Exec { 'update':
   command  => 'sudo apt update',
   provider => shell,
 }
