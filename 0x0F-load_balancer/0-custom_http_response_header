@@ -10,9 +10,6 @@ echo "server {
     listen [::]:80 default_server;
     root   /etc/nginx/html;
     index  index.html index.htm;
-    location / {
-        add_header X-Served-By $hostname;
-    }
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
@@ -23,4 +20,6 @@ echo "server {
     }
 }" > /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" > /etc/nginx/html/not_found_404.html
+new_string2="http {\\n\\tadd_header X-Served-By \"$HOSTNAME\";"
+sudo sed -i "s/http {/$new_string2/" /etc/nginx/nginx.conf
 sudo service nginx restart
