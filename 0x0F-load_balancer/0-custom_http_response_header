@@ -5,21 +5,11 @@ sudo apt update
 sudo apt install -y nginx
 sudo mkdir /etc/nginx/html
 echo "Hello World!" | sudo tee /var/www/html/index.html
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-    error_page 404 /not_found_404.html;
-    location = /not_found_40.html{
-        root /etc/nginx/html;
-        internal;
-    }
-}" > /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server/a error_page 404 /not_found_404.html;\n
+        location = /not_found_404.html{\n
+                root /etc/nginx/html;\n
+                internal;\n
+        }/' /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" > /etc/nginx/html/not_found_404.html
-new_string2="http {\\n\\tadd_header X-Served-By \"$HOSTNAME\";"
-sudo sed -i "s/http {/$new_string2/" /etc/nginx/nginx.conf
 sudo service nginx restart
