@@ -1,8 +1,12 @@
-# custom http
+# This puppet manifesto automates the task of creating a custom HTTP header
 
-Exec { 'update':
-  command  => 'sudo apt update ; sudo apt install -y nginx',
-  provider => shell,
+exec { 'update':
+  command => '/usr/bin/apt-get -y update',
+}
+
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['update']
 }
 
 file_line { 'redirect':
@@ -13,17 +17,20 @@ file_line { 'redirect':
   require => Package['nginx'],
 }
 
-Exec { 'add_header':
-  command  => 'sudo sed -i "/http {/a \\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
-  provider => shell,
-}
-
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+file_line { 'header':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'server_name _;',
+  line   => 'add_header X-Served-By "$HOSTNAME";',
   require => Package['nginx'],
 }
 
-Exec { 'restart':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+file { '/var/www/html/index.html':
+  content => 'Holberton School',
+  require => Package['nginx'],
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
