@@ -8,6 +8,7 @@ exec { 'add_header':
 }
 
 exec { 'restart':
-  command  => 'sudo service nginx restart',
+  command  => '
+  sudo service nginx restart',
   provider => 'shell',
 }
