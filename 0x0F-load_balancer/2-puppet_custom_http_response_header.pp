@@ -1,8 +1,12 @@
 # custom http
 
-Exec { 'update':
-  command  => 'sudo apt update ; sudo apt install -y nginx',
-  provider => shell,
+exec { 'update':
+  command => '/usr/bin/apt-get -y update',
+}
+
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['update']
 }
 
 file_line { 'redirect':
