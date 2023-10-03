@@ -25,11 +25,6 @@ file_line { 'header':
   require => Package['nginx'],
 }
 
-file { '/var/www/html/index.html':
-  content => 'Holberton School',
-  require => Package['nginx'],
-}
-
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
