@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# load blancer
+
+sudo apt update
+sudo apt install nginx -y
+
+sudo service nginx restart
