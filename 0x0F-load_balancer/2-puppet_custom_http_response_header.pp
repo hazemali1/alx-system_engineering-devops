@@ -1,6 +1,6 @@
 # custom http
 
-Exec { 'update':
+exec { 'update':
   command  => 'apt-get -y update',
   provider => shell,
 }
