@@ -5,11 +5,9 @@ exec { 'update':
   provider => shell,
 }
 
-file_line { 'header':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-  line   => 'add_header X-Served-By "$HOSTNAME";',
+exec { 'add_header':
+  command  => 'sudo sed -i "/http {/a \\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
+  provider => shell,
 }
 
 exec { 'restart':
