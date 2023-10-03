@@ -5,13 +5,28 @@ Exec { 'update':
   provider => shell,
 }
 
-
-Exec { 'add_header':
-  command  => 'sudo sed -i "/http {/a \\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
-  provider => shell,
+file_line { 'redirect':
+  ensure   => 'present',
+  path     => '/etc/nginx/sites-available/default',
+  after    => 'server_name _;',
+  line     => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+  require => Package['nginx'],
 }
 
-service { 'nginx':
-  ensure  => running,
+file_line { 'header':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'server_name _;',
+  line   => 'add_header X-Served-By "$HOSTNAME";',
   require => Package['nginx'],
+}
+
+file { '/var/www/html/index.html':
+  content => 'Holberton School',
+  require => Package['nginx'],
+}
+
+Exec { 'restart':
+  command  => 'sudo service nginx restart',
+  provider => shell,
 }
