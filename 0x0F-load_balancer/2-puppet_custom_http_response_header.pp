@@ -1,7 +1,7 @@
 # custom http
 
 Exec { 'update':
-  command  => 'sudo apt update',
+  command  => 'apt-get -y update',
   provider => shell,
 }
 
