@@ -6,7 +6,7 @@ Exec { 'update':
 }
 
 Exec { 'add_header':
-  command  => 'sudo sed -i '/http {/a \\tadd_header X-Served-By $HOSTNAME;' /etc/nginx/nginx.conf',
+  command  => 'sudo sed -i "/http {/a \\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
   provider => shell,
 }
 
