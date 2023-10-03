@@ -2,6 +2,6 @@
 # load blancer
 
 sudo apt update
-sudo apt install nginx -y
-
-sudo service nginx restart
+sudo apt install -y haproxy
+echo -e "frontend my_front\n\tbind *:80\n\tmode http\n\tdefault_backend my_back\n\nbackend my_back\n\tmode http\n\tserver web-01 100.25.15.141:80\n\tserver web-02 100.25.19.252:80\n\tbalance roundrobin" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy  restart
