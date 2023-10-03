@@ -5,11 +5,6 @@ exec { 'update':
   provider => shell,
 }
 
-package { 'nginx':
-  ensure  => installed,
-  require => Exec['update']
-}
-
 file_line { 'header':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
