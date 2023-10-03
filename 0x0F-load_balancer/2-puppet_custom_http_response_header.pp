@@ -1,12 +1,9 @@
 # custom http
 
-exec { 'update':
-  command  => 'sudo apt update ; sudo apt install -y nginx',
-  provider => shell,
-}
-
 exec { 'add_header':
-  command  => 'sudo sed -i "/http {/a add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf;
+  command  => 'sudo apt update;
+  sudo apt install -y nginx;
+  sudo sed -i "/http {/a add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf;
   sudo service nginx restart',
   provider => shell
 }
