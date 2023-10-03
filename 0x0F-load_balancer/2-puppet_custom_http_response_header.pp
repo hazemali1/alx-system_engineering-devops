@@ -15,7 +15,7 @@ exec { 'add_header':
   provider => shell,
 }
 
-exec { 'restart':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
