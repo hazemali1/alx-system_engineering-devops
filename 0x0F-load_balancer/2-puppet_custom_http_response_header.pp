@@ -1,7 +1,8 @@
 # custom http
 
 Exec { 'update':
-  command  => 'sudo apt update ; sudo apt install -y nginx',
+  command  => 'sudo apt update;
+  sudo apt install -y nginx',
   provider => 'shell',
 }
 
