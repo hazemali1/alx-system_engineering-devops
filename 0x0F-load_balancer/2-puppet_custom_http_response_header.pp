@@ -1,7 +1,8 @@
 # custom http
 
-exec { 'update':
-  command => '/usr/bin/apt-get -y update',
+Exec { 'update':
+  command  => 'sudo apt update',
+  provider => shell,
 }
 
 package { 'nginx':
