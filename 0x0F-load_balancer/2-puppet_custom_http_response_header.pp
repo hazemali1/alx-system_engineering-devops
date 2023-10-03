@@ -26,7 +26,7 @@ file { '/var/www/html/index.html':
   require => Package['nginx'],
 }
 
-Exec { 'restart':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
