@@ -1,6 +1,6 @@
 # custom http
 
-Exec { 'update':
+exec { 'update':
   command  => 'apt update',
   path     => '/usr/bin',
   provider => shell,
