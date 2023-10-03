@@ -1,9 +1,12 @@
 # custom http
 
-exec { 'add_headerr':
-  command  => 'sudo apt-get update;
-  sudo apt-get -y install nginx'
-  provider => 'shell',
+exec { 'update':
+  command => '/usr/bin/apt-get -y update',
+}
+
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['update']
 }
 
 exec { 'add_header':
