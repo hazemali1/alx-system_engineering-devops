@@ -1,2 +1,17 @@
 #!/usr/bin/env bash
-# info
+# info\
+
+helping () {
+	echo -n "The subdomain $2"
+	dig $2.$1 | grep -A1 'ANSWER SECTION:' | awk ' /IN/ {print  " is a " $4  " record and points to " $5}'
+}
+
+if [ $# -eq 2  ]
+then
+	helping $1 $2
+else
+	helping $1 'www'
+	helping $1 'lb-01'
+	helping $1 'web-01'
+	helping $1 'web-02'
+fi
