@@ -34,6 +34,7 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 frontend my_front
         bind *:80
+        bind *:443 ssl crt /etc/haproxy/fullchain.pem
         mode http
         default_backend my_back
 
