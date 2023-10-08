@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # debugging
-echo -e 'server {\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server ipv6only=on;\n\n\troot /usr/share/nginx/html;\n\tindex index.html index.htm;\n\n\tserver_name localhost;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}' > /etc/nginx/sites-enabled/default
+echo -e 'server {\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server ipv6only=on;\n\n\troot /usr/share/nginx/html;\n\tindex index.html index.htm;\n\n\tserver_name localhost;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}' | sudo tee /etc/nginx/sites-enabled/default
 sudo service nginx restart
