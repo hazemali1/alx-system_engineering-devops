@@ -2,5 +2,5 @@
 import requests
 
 
-user = requests.get.content('https://jsonplaceholder.typicode.com/users')
+user = requests.get.json('https://jsonplaceholder.typicode.com/users')
 print(user)
