@@ -2,9 +2,9 @@
 """
 decumented for models
 """
+import csv
 import requests
 import sys
-import csv
 """
 request and sys
 """
