@@ -17,4 +17,4 @@ for t in todo:
 		if t['completed'] == 'true':
 			done += 1
 
-print("Employee {} is done with tasks({}/{}}):".format(name, numbers, done))
+print("Employee {} is done with tasks({}/{}):".format(name, numbers, done))
