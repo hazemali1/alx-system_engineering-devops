@@ -6,4 +6,5 @@ import sys
 user = requests.get('https://jsonplaceholder.typicode.com/users').json()
 for u in user:
 	for k , v in u.items():
-		print(k)
+		if k == 'id' and v == 2:
+			print("balah")
