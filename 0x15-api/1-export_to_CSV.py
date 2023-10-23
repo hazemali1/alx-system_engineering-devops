@@ -18,7 +18,7 @@ if __name__ == "__main__":
             name = u['username']
 
     with open(sys.argv[1] + ".csv", "w") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, quoting=csv.QUOTE_ALL)
         for t in todo:
             lis = []
             if t['userId'] == int(sys.argv[1]):
