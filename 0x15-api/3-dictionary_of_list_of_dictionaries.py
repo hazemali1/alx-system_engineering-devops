@@ -19,10 +19,10 @@ if __name__ == "__main__":
         for t in todo:
             dic = {}
             if id == t['userId']:
-                    dic["username"] = u['username']
-                    dic["task"] = t['title']
-                    dic["completed"] = t['completed']
-                    lis.append(dic)
+                dic["username"] = u['username']
+                dic["task"] = t['title']
+                dic["completed"] = t['completed']
+                lis.append(dic)
         my_dict[id] = lis
 
     my_obj = json.dumps(my_dict)
