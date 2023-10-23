@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+decumented for models
+"""
 import requests
 import sys
 
