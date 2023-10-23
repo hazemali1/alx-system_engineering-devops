@@ -20,12 +20,12 @@ done = 0
 for t in todo:
     if t['userId'] == int(sys.argv[1]):
         numbers += 1
-        if t['completed'] == True:
+        if t['completed'] is True:
             done += 1
 
 print("Employee {} is done with tasks({}/{}):".format(name, done, numbers))
 
 for t in todo:
     if t['userId'] == int(sys.argv[1]):
-        if t['completed'] == True:
+        if t['completed'] is True:
             print("\t " + t['title'])
