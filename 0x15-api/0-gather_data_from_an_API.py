@@ -5,4 +5,5 @@ import sys
 
 user = requests.get('https://jsonplaceholder.typicode.com/users').json()
 for u in user:
-	print(u['id'])
+	if u['id'] == sys.argv[1]:
+		print(u['name'])
