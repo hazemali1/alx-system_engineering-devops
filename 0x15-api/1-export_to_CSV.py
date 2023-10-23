@@ -28,3 +28,4 @@ if __name__ == "__main__":
             lis.append(t['completed'])
             lis.append(',')
             lis.append(t['title'])
+            w.writerow(lis)
