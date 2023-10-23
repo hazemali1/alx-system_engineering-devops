@@ -14,8 +14,8 @@ done = 0
 for t in todo:
 	if t['userId'] == int(sys.argv[1]):
 		numbers += 1
+		print(t['completed'])
 		if t['completed'] == 'true':
-			print("hello")
 			done += 1
 
 print("Employee {} is done with tasks({}/{}):".format(name, done, numbers))
