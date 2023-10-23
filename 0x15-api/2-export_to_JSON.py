@@ -28,7 +28,7 @@ if __name__ == "__main__":
             lis.append(dic)
 
     my_dict[sys.argv[1]] = lis
-    json_obj = json.dumps(my_dict)
+    my_obj = json.dumps(my_dict)
 
     with open(sys.argv[1] + ".json", "w") as f:
-        f.write(my_dict)
+        f.write(my_obj)
