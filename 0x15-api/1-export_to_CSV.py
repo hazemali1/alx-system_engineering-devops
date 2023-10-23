@@ -23,10 +23,7 @@ if __name__ == "__main__":
             lis = []
             if t['userId'] == int(sys.argv[1]):
                 lis.append(sys.argv[1])
-                lis.append(',')
                 lis.append(name)
-                lis.append(',')
                 lis.append(t['completed'])
-                lis.append(',')
                 lis.append(t['title'])
                 w.writerow(lis)
