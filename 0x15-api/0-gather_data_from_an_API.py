@@ -18,3 +18,8 @@ for t in todo:
 			done += 1
 
 print("Employee {} is done with tasks({}/{}):".format(name, done, numbers))
+
+for t in todo:
+	if t['userId'] == int(sys.argv[1]):
+		if t['completed'] == True:
+			print("\t " + t['title'])
