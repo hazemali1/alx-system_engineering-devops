@@ -14,7 +14,6 @@ done = 0
 for t in todo:
 	if t['userId'] == int(sys.argv[1]):
 		numbers += 1
-		print(t['completed'])
 		if t['completed'] == True:
 			done += 1
 
