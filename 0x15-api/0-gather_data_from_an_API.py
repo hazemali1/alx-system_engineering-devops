@@ -4,6 +4,9 @@ decumented for models
 """
 import requests
 import sys
+"""
+request and sys
+"""
 
 
 user = requests.get('https://jsonplaceholder.typicode.com/users').json()
