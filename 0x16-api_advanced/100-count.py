@@ -19,9 +19,8 @@ def count_words(subreddit, word_list, word_count={}):
     if not lis:
         return None
     for title in lis:
-        split_words = title.split()
         for word in word_list:
-            for s_word in split_words:
+            for s_word in title:
                 if s_word.lower() == word.lower():
                     word_count[word] += 1
 
