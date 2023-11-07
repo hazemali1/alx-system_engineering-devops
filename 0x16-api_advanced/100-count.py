@@ -8,8 +8,8 @@ recurse = __import__('2-recurse').recurse
 
 def count_words(subreddit, word_list, word_count={}):
     """
-		count words
-		"""
+    count words
+    """
     sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
                             .format(subreddit),
                             headers={"User-Agent": "My-User-Agent"})
@@ -18,8 +18,6 @@ def count_words(subreddit, word_list, word_count={}):
     hot_l = recurse(subreddit)
     if not hot_l:
         return None
-
-
     if word_count == {}:
         word_count = {word: 0 for word in word_list}
 
