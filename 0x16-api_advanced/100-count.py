@@ -7,6 +7,7 @@ def count_words(subreddit, word_list, word_count={}, after=None):
     word_list in the titles of all the hot posts
     of the subreddit"""
     import requests
+    recurse = __import__('2-recurse').recurse
 
     sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
                             .format(subreddit),
@@ -18,10 +19,7 @@ def count_words(subreddit, word_list, word_count={}, after=None):
 
     info = sub_info.json()
 
-    hot_l = [child.get("data").get("title")
-             for child in info
-             .get("data")
-             .get("children")]
+    hot_l = recurse(subreddit)
     if not hot_l:
         return None
 
