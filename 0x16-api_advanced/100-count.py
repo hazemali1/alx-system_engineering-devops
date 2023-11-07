@@ -15,12 +15,11 @@ def count_words(subreddit, word_list, word_count={}):
                             headers={"User-Agent": "My-User-Agent"})
     if sub_info.status_code != 200:
         return None
-    hot_l = recurse(subreddit)
-    if not hot_l:
+    lis = recurse(subreddit)
+    if not lis:
         return None
-
-    for title in hot_l:
-        split_words = title.split(' ')
+    for title in lis:
+        split_words = title.split()
         for word in word_list:
             for s_word in split_words:
                 if s_word.lower() == word.lower():
