@@ -15,6 +15,6 @@ def top_ten(subreddit):
     if req.status_code < 300:
         for s in range(0, 10):
             print(req.json().get("data").get("children")[s]
-						         .get("data").get("title"))
+                     .get("data").get("title"))
     else:
         print(None)
