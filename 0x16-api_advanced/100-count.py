@@ -19,7 +19,6 @@ def count_words(subreddit, word_list, word_count={}):
     if not hot_l:
         return None
 
-    word_list = list(dict.fromkeys(word_list))
 
     if word_count == {}:
         word_count = {word: 0 for word in word_list}
