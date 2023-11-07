@@ -13,8 +13,9 @@ def recurse(subreddit, hot_list=[], s=0):
                        .format(subreddit),
                        headers={"User-Agent": "User-Agent"})
     if req.status_code < 300:
-        hot_list.append(req.json().get("data").get("children")[s]
-                           .get("data").get("title"))
+        if req.json().get("data").get("children")[s]:
+            hot_list.append(req.json().get("data").get("children")[s]
+                               .get("data").get("title"))
         if req.json().get("data").get("after"):
             print("hello")
             return recurse(subreddit, hot_list, s + 1)
