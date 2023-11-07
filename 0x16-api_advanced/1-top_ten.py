@@ -13,7 +13,7 @@ def top_ten(subreddit):
                        .format(subreddit),
                        headers={"User-Agent": "User-Agent"})
     if req.status_code < 300:
-        for s in range(0, 12):
+        for s in range(0, 11):
             print(req.json().get("data").get("children")[s]
                      .get("data").get("title"))
     else:
