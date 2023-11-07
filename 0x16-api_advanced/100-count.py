@@ -15,12 +15,8 @@ def count_words(subreddit, word_list, word_count={}):
                             headers={"User-Agent": "My-User-Agent"})
     if sub_info.status_code != 200:
         return None
-
-    info = sub_info.json()
-
     hot_l = recurse(subreddit)
-    if not hot_l:
-        return None
+
 
     word_list = list(dict.fromkeys(word_list))
 
@@ -34,11 +30,11 @@ def count_words(subreddit, word_list, word_count={}):
                 if s_word.lower() == word.lower():
                     word_count[word] += 1
 
-    if not info.get("data").get("after"):
+    if not sub_info.json().get("data").get("after"):
         sorted_counts = sorted(word_count.items(), key=lambda kv: kv[0])
         sorted_counts = sorted(word_count.items(),
                                key=lambda kv: kv[1], reverse=True)
         [print('{}: {}'.format(k, v)) for k, v in sorted_counts if v != 0]
     else:
         return count_words(subreddit, word_list, word_count,
-                           info.get("data").get("after"))
+                           sub_info.json().get("data").get("after"))
