@@ -26,4 +26,5 @@ def count_words(subreddit, word_list, word_count={}):
     if sub_info.json().get("data").get("after"):
         return count_words(subreddit, word_list, word_count)
     else:
-        [print('{}: {}'.format(k, v)) for k, v in word_count if v != 0]
+        for k, v in word_count:
+            print(k, ": ", v)
