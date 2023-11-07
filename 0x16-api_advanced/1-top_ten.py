@@ -17,4 +17,4 @@ def top_ten(subreddit):
             print(req.json().get("data").get("children")[s]
                      .get("data").get("title"))
     else:
-        print("hello")
+        print(None)
