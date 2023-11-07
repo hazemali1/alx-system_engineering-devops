@@ -20,8 +20,8 @@ def count_words(subreddit, word_list, word_count={}):
         return None
     for title in lis:
         for word in word_list:
-            for s_word in title:
-                if s_word.lower() == word.lower():
+            for s in title:
+                if s == word:
                     word_count[word] += 1
 
     if not sub_info.json().get("data").get("after"):
