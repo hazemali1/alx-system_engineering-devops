@@ -16,7 +16,8 @@ def count_words(subreddit, word_list, word_count={}):
     if sub_info.status_code != 200:
         return None
     hot_l = recurse(subreddit)
-
+    if not hot_l:
+        return None
 
     word_list = list(dict.fromkeys(word_list))
 
