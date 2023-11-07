@@ -1,45 +1,24 @@
 #!/usr/bin/python3
-"""Module for task 3"""
+"""
+import requests
+"""
+import requests
 
 
-def count_words(subreddit, word_list, word_count={}, after=None):
-    """Queries the Reddit API and returns the count of words in
-    word_list in the titles of all the hot posts
-    of the subreddit"""
-    import requests
-    recurse = __import__('2-recurse').recurse
-
-    sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
-                            .format(subreddit),
-                            params={"after": after},
-                            headers={"User-Agent": "My-User-Agent"},
-                            allow_redirects=False)
-    if sub_info.status_code != 200:
-        return None
-
-    info = sub_info.json()
-
-    hot_l = recurse(subreddit)
-    if not hot_l:
-        return None
-
-    word_list = list(dict.fromkeys(word_list))
-
-    if word_count == {}:
-        word_count = {word: 0 for word in word_list}
-
-    for title in hot_l:
-        split_words = title.split(' ')
-        for word in word_list:
-            for s_word in split_words:
-                if s_word.lower() == word.lower():
-                    word_count[word] += 1
-
-    if not info.get("data").get("after"):
-        sorted_counts = sorted(word_count.items(), key=lambda kv: kv[0])
-        sorted_counts = sorted(word_count.items(),
-                               key=lambda kv: kv[1], reverse=True)
-        [print('{}: {}'.format(k, v)) for k, v in sorted_counts if v != 0]
+def count_words(subreddit, word_list):
+    """
+    subscribers
+    """
+    req = requests.get("https://www.reddit.com/r/{}/hot.json"
+                       .format(subreddit),
+                       headers={"User-Agent": "User-Agent"})
+    if req.status_code < 300:
+        if len(req.json().get("data").get("children")) > s:
+            hot_list.append(req.json().get("data").get("children")[s]
+                               .get("data").get("title"))
+        if req.json().get("data").get("after"):
+            return recurse(subreddit, hot_list, s + 1)
+        else:
+            return hot_list
     else:
-        return count_words(subreddit, word_list, word_count,
-                           info.get("data").get("after"))
+        return None
