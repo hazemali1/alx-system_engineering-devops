@@ -26,6 +26,4 @@ def count_words(subreddit, word_list, word_count={}):
     if sub_info.json().get("data").get("after"):
         return count_words(subreddit, word_list, word_count)
     else:
-        sorted_counts = sorted(word_count.items(),
-                               key=lambda kv: kv[1], reverse=True)
         [print('{}: {}'.format(k, v)) for k, v in word_count if v != 0]
