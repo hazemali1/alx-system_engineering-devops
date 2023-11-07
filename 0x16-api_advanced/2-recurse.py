@@ -5,7 +5,7 @@ import requests
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], s=0):
     """
     subscribers
     """
@@ -13,10 +13,11 @@ def recurse(subreddit, hot_list=[]):
                        .format(subreddit),
                        headers={"User-Agent": "User-Agent"})
     if req.status_code < 300:
-        for s in range(0, len(req.json().get("data").get("children"))):
-            hot_list.append(req.json().get("data").get("children")[s]
-                               .get("data").get("title"))
-            print(req.json().get("data").get("after"))
-        return hot_list
+        hot_list.append(req.json().get("data").get("children")[s]
+                           .get("data").get("title"))
+        if req.json().get("data").get("after"):
+            return recurse(subreddit, hot_list, s + 1)
+        else:
+            return hot_list
     else:
         return None
