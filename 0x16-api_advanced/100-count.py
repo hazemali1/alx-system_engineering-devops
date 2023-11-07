@@ -18,8 +18,6 @@ def count_words(subreddit, word_list, word_count={}):
     hot_l = recurse(subreddit)
     if not hot_l:
         return None
-    if word_count == {}:
-        word_count = {word: 0 for word in word_list}
 
     for title in hot_l:
         split_words = title.split(' ')
