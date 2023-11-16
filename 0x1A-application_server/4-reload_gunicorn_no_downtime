@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # reload Gunicorn
-sudo systemctl reload gunicorn
+pid = $(ps auxf | grep 'gunicorn' | awk '{print $2}')
+kill -s SIGHUP $PID
