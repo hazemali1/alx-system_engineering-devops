@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # reload Gunicorn
 pid=$(ps auxf | grep 'gunicorn' | awk '{print $2}')
-kill -s SIGHUP $pid
+kill -s SIGHUP "$pid"
