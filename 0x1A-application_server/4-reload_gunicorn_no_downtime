@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # reload Gunicorn
+MAINPID=$(pgrep -f 'gunicorn.*--workers')
 kill -s HUP "$MAINPID"
 kill -s TERM "$MAINPID"
 pkill -HUP gunicorn
