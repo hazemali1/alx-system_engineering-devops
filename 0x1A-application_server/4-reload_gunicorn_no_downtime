@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # reload Gunicorn
-pkill -HUP gunicorn
+pid=$(pgrep -f 'gunicorn')
+kill -HUP "$pid"
