@@ -1,5 +1,3 @@
-# http request
-exec { 'sed':
-	command => 'sudo sed -i /15/4096/ /etc/default/nginx ;
-	sudo service nginx restart'
-}
+# Puppet script
+exec { '/usr/bin/env sed -i s/15/1000/ /etc/default/nginx': }
+-> exec { '/usr/bin/env service nginx restart': }
