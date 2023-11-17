@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # reload Gunicorn
-pkill -HUP gunicorn
+/bin/kill -s HUP $MAINPID
+
